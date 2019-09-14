@@ -1,5 +1,8 @@
 package net.furkanakdemir.shoplistsample.ui.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 sealed class ViewItem {
     abstract fun viewType(): Int
 
@@ -33,8 +36,10 @@ sealed class ViewItem {
 }
 
 
-class Slide(
+@Parcelize
+data class Slide(
     val title: String,
     val subtitle: String,
-    val imageUrl: String
-)
+    val imageUrl: String,
+    val isClickable: Boolean = false
+) : Parcelable

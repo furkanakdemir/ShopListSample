@@ -28,7 +28,7 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
                             Slide(banner.title, banner.subtitle, banner.imageUrl)
                         })
                         is Widget.Products -> ViewItem.SliderViewItem(it.products.map { product ->
-                            Slide(product.name, product.categoryName, product.imageUrl)
+                            Slide(product.name, product.categoryName, product.imageUrl, true)
                         })
                         else -> ViewItem.DefaultViewItem
                     }
@@ -39,7 +39,7 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
                             Slide(banner.title, banner.subtitle, banner.imageUrl)
                         })
                         is Widget.Products -> ViewItem.ListingViewItem(it.products.map { product ->
-                            Slide(product.name, product.categoryName, product.imageUrl)
+                            Slide(product.name, product.categoryName, product.imageUrl, true)
                         })
                         else -> ViewItem.DefaultViewItem
                     }

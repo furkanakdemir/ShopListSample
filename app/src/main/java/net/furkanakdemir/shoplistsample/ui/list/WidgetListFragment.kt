@@ -10,18 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_widget_list.*
 import net.furkanakdemir.shoplistsample.R
 import net.furkanakdemir.shoplistsample.image.ImageLoader
 import net.furkanakdemir.shoplistsample.result.EventObserver
 import net.furkanakdemir.shoplistsample.ui.WidgetViewModel
 import net.furkanakdemir.shoplistsample.ui.base.BaseFragment
+import net.furkanakdemir.shoplistsample.ui.data.Slide
 import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  */
-class WidgetListFragment : BaseFragment() {
+class WidgetListFragment : BaseFragment(), SliderAdapter.OnSlideCallback {
 
     private lateinit var widgetListAdapter: WidgetListAdapter
 
@@ -64,7 +66,7 @@ class WidgetListFragment : BaseFragment() {
     }
 
     private fun setupRecyclerView() {
-        widgetListAdapter = WidgetListAdapter(imageLoader)
+        widgetListAdapter = WidgetListAdapter(imageLoader, this)
 
         widgetsRecyclerView.apply {
             setHasFixedSize(true)
@@ -92,4 +94,10 @@ class WidgetListFragment : BaseFragment() {
         progressBar.visibility = GONE
     }
 
+    override fun onSlideClicked(item: Slide) {
+
+        val action = WidgetListFragmentDirections.actionWidgetListFragmentToWidgetDetailFragment()
+            .setSlide(item)
+        findNavController().navigate(action)
+    }
 }

@@ -11,7 +11,11 @@ import net.furkanakdemir.shoplistsample.image.ImageLoader
 import net.furkanakdemir.shoplistsample.ui.base.BaseViewHolder
 import net.furkanakdemir.shoplistsample.ui.data.Slide
 
-class SliderAdapter(private val slides: List<Slide>, val imageLoader: ImageLoader) :
+class SliderAdapter(
+    private val slides: List<Slide>,
+    val imageLoader: ImageLoader,
+    val onSlideCallback: OnSlideCallback
+) :
     RecyclerView.Adapter<BaseViewHolder<Slide>>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Slide> =
         SlideViewHolder(
@@ -36,6 +40,16 @@ class SliderAdapter(private val slides: List<Slide>, val imageLoader: ImageLoade
             slideTitleTextView.text = item.title
             slideSubtitleTextView.text = item.subtitle
             imageLoader.load(imageView, item.imageUrl)
+
+            if (item.isClickable) {
+                itemView.setOnClickListener {
+                    onSlideCallback.onSlideClicked(item)
+                }
+            }
         }
+    }
+
+    interface OnSlideCallback {
+        fun onSlideClicked(item: Slide)
     }
 }
