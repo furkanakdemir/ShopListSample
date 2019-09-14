@@ -52,8 +52,12 @@ class WidgetListFragment : BaseFragment() {
         })
 
         widgetViewModel.eventLiveData.observe(this, EventObserver {
-            messageTextView.text = it
-            showMessage()
+
+            when (it) {
+                is WidgetViewModel.ViewState.Loading -> showLoading()
+                is WidgetViewModel.ViewState.Empty -> showMessage(it.message)
+                is WidgetViewModel.ViewState.Error -> showMessage(it.message)
+            }
         })
 
         widgetViewModel.getWidgets()
@@ -68,14 +72,24 @@ class WidgetListFragment : BaseFragment() {
         }
     }
 
-    private fun showMessage() {
+    private fun showLoading() {
+        messageTextView.visibility = GONE
+        widgetsRecyclerView.visibility = GONE
+        progressBar.visibility = VISIBLE
+
+    }
+
+    private fun showMessage(message: String) {
+        messageTextView.text = message
         messageTextView.visibility = VISIBLE
         widgetsRecyclerView.visibility = GONE
+        progressBar.visibility = GONE
     }
 
     private fun showContent() {
         messageTextView.visibility = GONE
         widgetsRecyclerView.visibility = VISIBLE
+        progressBar.visibility = GONE
     }
 
 }

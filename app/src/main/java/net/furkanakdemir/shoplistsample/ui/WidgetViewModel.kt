@@ -22,16 +22,17 @@ class WidgetViewModel @Inject constructor(
     val widgetsLiveData: LiveData<List<ViewItem>>
         get() = _widgetsLiveData
 
-    private val _eventLiveData = MutableLiveData<Event<String>>()
-    val eventLiveData: LiveData<Event<String>>
+    private val _eventLiveData = MutableLiveData<Event<ViewState>>()
+    val eventLiveData: LiveData<Event<ViewState>>
         get() = _eventLiveData
 
     fun getWidgets() {
+        _eventLiveData.value = Event(ViewState.Loading)
         viewModelScope.launch {
             when (val result = widgetRepository.getWidgets()) {
                 is Result.Success -> {
                     if (result.data.isNullOrEmpty()) {
-                        _eventLiveData.value = Event("Empty List")
+                        _eventLiveData.value = Event(ViewState.Empty("Empty List"))
                     } else {
                         val viewList = mutableListOf<ViewItem>()
 
@@ -43,14 +44,15 @@ class WidgetViewModel @Inject constructor(
                     }
                 }
                 is Result.Error -> {
-                    _eventLiveData.value = Event("Error!")
+                    _eventLiveData.value = Event(ViewState.Error("Failed to load the data!"))
                 }
             }
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        // TODO Cancel active jobs
+    sealed class ViewState {
+        object Loading : ViewState()
+        data class Empty(val message: String) : ViewState()
+        data class Error(val message: String) : ViewState()
     }
 }

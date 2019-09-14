@@ -33,6 +33,16 @@
             app:layout_constraintTop_toTopOf="parent"
             android:text="@string/widget_list_empty" />
 
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
