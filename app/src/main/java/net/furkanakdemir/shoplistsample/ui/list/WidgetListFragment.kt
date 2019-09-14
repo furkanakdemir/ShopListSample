@@ -40,6 +40,9 @@ class WidgetListFragment : BaseFragment(), SliderAdapter.OnSlideCallback {
     override val layoutId: Int
         get() = R.layout.fragment_widget_list
 
+    override val title: String
+        get() = TITLE_LIST
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -99,5 +102,9 @@ class WidgetListFragment : BaseFragment(), SliderAdapter.OnSlideCallback {
         val action = WidgetListFragmentDirections.actionWidgetListFragmentToWidgetDetailFragment()
             .setSlide(item)
         findNavController().navigate(action)
+    }
+
+    companion object {
+        private const val TITLE_LIST = "Shopping"
     }
 }

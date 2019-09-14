@@ -20,6 +20,9 @@ class WidgetDetailFragment : BaseFragment() {
     @Inject
     lateinit var imageLoader: ImageLoader
 
+    override val title: String
+        get() = TITLE_DETAIL
+
     override val layoutId: Int
         get() = R.layout.fragment_widget_detail
 
@@ -36,5 +39,9 @@ class WidgetDetailFragment : BaseFragment() {
         imageLoader.load(productImageView, slide.imageUrl)
         nameTextView.text = slide.title
         categoryTextView.text = slide.subtitle
+    }
+
+    companion object {
+        private val TITLE_DETAIL: String = "Detail"
     }
 }

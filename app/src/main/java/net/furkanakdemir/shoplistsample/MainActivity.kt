@@ -2,6 +2,7 @@ package net.furkanakdemir.shoplistsample
 
 import android.os.Bundle
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,8 +17,16 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private fun setupToolbar() {
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // Set up the ActionBar to stay in sync with the NavController
+        setupActionBarWithNavController(findNavController(R.id.nav_host_fragment))
+
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
+
+
+    fun setTitle(text: String) {
+        supportActionBar?.setTitle(text)
+    }
 }
