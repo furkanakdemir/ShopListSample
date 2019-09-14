@@ -15,7 +15,9 @@ class WidgetViewModel @Inject constructor(
         viewModelScope.launch {
             val widgets = widgetRepository.getWidgets()
 
-            println(widgets)
+            widgets.forEach {
+                println(it.toString())
+            }
         }
     }
 

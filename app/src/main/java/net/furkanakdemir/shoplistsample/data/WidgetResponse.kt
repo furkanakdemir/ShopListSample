@@ -7,30 +7,32 @@ data class WidgetResponse(
     @SerializedName("widgets") val widgetRaws: List<WidgetRaw?> = emptyList()
 ) {
     data class WidgetRaw(
-        @SerializedName("bannerContents") val bannerContents: List<BannerContent?>?,
+        @SerializedName("bannerContents") val bannerContents: List<BannerContentRaw?>?,
         @SerializedName("displayCount") val displayCount: Int?,
-        @SerializedName("displayOptions") val displayOptions: DisplayOptions?,
+        @SerializedName("displayOptions") val displayOptions: DisplayOptionsRaw?,
         @SerializedName("displayOrder") val displayOrder: Int?,
         @SerializedName("displayType") val displayType: String?,
         @SerializedName("endDate") val endDate: String?,
         @SerializedName("eventKey") val eventKey: String?,
         @SerializedName("id") val id: Int?,
-        @SerializedName("products") val products: List<Product?>?,
+        @SerializedName("products") val products: List<ProductRaw?>?,
         @SerializedName("startDate") val startDate: String?,
         @SerializedName("title") val title: String?,
         @SerializedName("type") val type: String?,
         @SerializedName("widgetNavigation") val widgetNavigationRaw: WidgetNavigationRaw?
     ) {
-        data class BannerContent(
+        data class BannerContentRaw(
             @SerializedName("bannerEventKey") val bannerEventKey: String?,
             @SerializedName("bannerPosition") val bannerPosition: String?,
             @SerializedName("displayOrder") val displayOrder: Int?,
             @SerializedName("height") val height: Int?,
             @SerializedName("imageUrl") val imageUrl: String?,
-            @SerializedName("navigation") val navigation: Navigation?,
-            @SerializedName("width") val width: Int?
+            @SerializedName("navigation") val navigation: NavigationRaw?,
+            @SerializedName("width") val width: Int?,
+            @SerializedName("title") val title: String?,
+            @SerializedName("subtitle") val subtitle: String?
         ) {
-            data class Navigation(
+            data class NavigationRaw(
                 @SerializedName("deeplink") val deeplink: String?,
                 @SerializedName("id") val id: Int?,
                 @SerializedName("landingTitle") val landingTitle: String?,
@@ -39,14 +41,14 @@ data class WidgetResponse(
             )
         }
 
-        data class DisplayOptions(
+        data class DisplayOptionsRaw(
             @SerializedName("showClearButton") val showClearButton: Boolean?,
             @SerializedName("showCountdown") val showCountdown: Boolean?,
             @SerializedName("showProductFavoredButton") val showProductFavoredButton: Boolean?,
             @SerializedName("showProductPrice") val showProductPrice: Boolean?
         )
 
-        data class Product(
+        data class ProductRaw(
             @SerializedName("averageRating") val averageRating: Double?,
             @SerializedName("boutiqueEndDate") val boutiqueEndDate: String?,
             @SerializedName("boutiqueId") val boutiqueId: Int?,
@@ -72,16 +74,16 @@ data class WidgetResponse(
             @SerializedName("salePrice") val salePrice: Double?,
             @SerializedName("stamps") val stamps: List<Any?>?,
             @SerializedName("stockStatus") val stockStatus: Int?,
-            @SerializedName("variants") val variants: List<Variant?>?
+            @SerializedName("variants") val variants: List<VariantRaw?>?
         ) {
-            data class Variant(
+            data class VariantRaw(
                 @SerializedName("campaignId") val campaignId: Int?,
                 @SerializedName("listingId") val listingId: String?,
                 @SerializedName("name") val name: String?,
-                @SerializedName("price") val price: Price?,
+                @SerializedName("price") val price: PriceRaw?,
                 @SerializedName("value") val value: String?
             ) {
-                data class Price(
+                data class PriceRaw(
                     @SerializedName("marketPrice") val marketPrice: Double?,
                     @SerializedName("salePrice") val salePrice: Double?
                 )
