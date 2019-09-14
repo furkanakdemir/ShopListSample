@@ -15,7 +15,7 @@ sealed class ViewItem {
         override fun viewType(): Int = VIEW_TYPE_SLIDER
     }
 
-    data class ListingViewItem(val imageUrl: String) : ViewItem() {
+    data class ListingViewItem(val slides: List<Slide>) : ViewItem() {
         override fun viewType(): Int = VIEW_TYPE_LISTING
     }
 

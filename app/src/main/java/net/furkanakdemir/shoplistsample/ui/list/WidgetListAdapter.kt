@@ -42,7 +42,7 @@ class WidgetListAdapter(val imageLoader: ImageLoader) : RecyclerView.Adapter<Bas
 
             VIEW_TYPE_LISTING -> ListingViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.list_item_widget, parent, false)
+                    .inflate(R.layout.list_item_slider, parent, false)
             )
 
             VIEW_TYPE_CAROUSEL -> CarouselViewHolder(
@@ -101,8 +101,13 @@ class WidgetListAdapter(val imageLoader: ImageLoader) : RecyclerView.Adapter<Bas
     inner class ListingViewHolder(itemView: View) :
         BaseViewHolder<ViewItem.ListingViewItem>(itemView) {
         override fun bind(item: ViewItem.ListingViewItem) {
-            val imageView = itemView.findViewById<ImageView>(R.id.imageTextView)
-            imageLoader.load(imageView, item.imageUrl)
+            val sliderRecyclerView = itemView.findViewById<RecyclerView>(R.id.sliderRecyclerView)
+            sliderRecyclerView.apply {
+                layoutManager =
+                    LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
+                adapter = SliderAdapter(item.slides, imageLoader)
+                setRecycledViewPool(viewPool)
+            }
         }
     }
 
