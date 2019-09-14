@@ -2,11 +2,13 @@ package net.furkanakdemir.shoplistsample.ui.list
 
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
 import net.furkanakdemir.shoplistsample.R
 import net.furkanakdemir.shoplistsample.ui.WidgetViewModel
 import net.furkanakdemir.shoplistsample.ui.base.BaseFragment
@@ -34,5 +36,11 @@ class WidgetListFragment : BaseFragment() {
 
 
         widgetViewModel.getWidgets()
+
+
+        // TODO Remove UI is implemented
+        Handler().postDelayed({
+            findNavController().navigate(R.id.action_widgetListFragment_to_widgetDetailFragment)
+        }, 1500)
     }
 }

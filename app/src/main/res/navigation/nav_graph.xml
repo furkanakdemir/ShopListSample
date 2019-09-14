@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/widgetListFragment">
+    <fragment
+        android:id="@+id/widgetListFragment"
+        android:name="net.furkanakdemir.shoplistsample.ui.list.WidgetListFragment"
+        android:label="fragment_widget_list"
+        tools:layout="@layout/fragment_widget_list">
+        <action
+            android:id="@+id/action_widgetListFragment_to_widgetDetailFragment"
+            app:destination="@id/widgetDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/widgetDetailFragment"
+        android:name="net.furkanakdemir.shoplistsample.ui.detail.WidgetDetailFragment"
+        android:label="fragment_widget_detail"
+        tools:layout="@layout/fragment_widget_detail" />
+</navigation>
