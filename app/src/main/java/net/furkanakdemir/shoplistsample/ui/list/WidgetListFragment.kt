@@ -3,6 +3,8 @@ package net.furkanakdemir.shoplistsample.ui.list
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -46,11 +48,12 @@ class WidgetListFragment : BaseFragment() {
 
         widgetViewModel.widgetsLiveData.observe(this, Observer {
             widgetListAdapter.widgets = it.toMutableList()
+            showContent()
         })
 
         widgetViewModel.eventLiveData.observe(this, EventObserver {
-            // TODO Consume events
-            println(it)
+            messageTextView.text = it
+            showMessage()
         })
 
         widgetViewModel.getWidgets()
@@ -59,10 +62,20 @@ class WidgetListFragment : BaseFragment() {
     private fun setupRecyclerView() {
         widgetListAdapter = WidgetListAdapter(imageLoader)
 
-        widgets_recycler_view.apply {
+        widgetsRecyclerView.apply {
             setHasFixedSize(true)
             adapter = widgetListAdapter
         }
+    }
+
+    private fun showMessage() {
+        messageTextView.visibility = VISIBLE
+        widgetsRecyclerView.visibility = GONE
+    }
+
+    private fun showContent() {
+        messageTextView.visibility = GONE
+        widgetsRecyclerView.visibility = VISIBLE
     }
 
 }
