@@ -14,6 +14,7 @@ import net.furkanakdemir.shoplistsample.mapper.ListMapper
 import net.furkanakdemir.shoplistsample.mapper.Mapper
 import net.furkanakdemir.shoplistsample.mapper.RealListMapper
 import net.furkanakdemir.shoplistsample.network.NetworkModule
+import net.furkanakdemir.shoplistsample.ui.data.ViewItem
 
 @Module(includes = [NetworkModule::class])
 abstract class WidgetModule {
@@ -38,5 +39,9 @@ abstract class WidgetModule {
         @JvmStatic
         @Provides
         fun bindDomainMapper(): Mapper<WidgetResponse.WidgetRaw?, Widget> = DomainMapper()
+
+        @JvmStatic
+        @Provides
+        fun bindViewMapper(): Mapper<Widget, ViewItem> = ViewMapper()
     }
 }

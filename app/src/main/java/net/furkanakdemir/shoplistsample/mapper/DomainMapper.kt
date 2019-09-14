@@ -8,7 +8,6 @@ class DomainMapper @Inject constructor() : Mapper<WidgetResponse.WidgetRaw?, Wid
 
         return input?.let {
 
-
             return when (it.type) {
 
                 "PRODUCT" -> {
@@ -25,9 +24,9 @@ class DomainMapper @Inject constructor() : Mapper<WidgetResponse.WidgetRaw?, Wid
                 }
 
 
-                else -> Widget.Ignored
+                else -> Widget.Default(buildWidgetInfo(it))
             }
-        } ?: Widget.Ignored
+        } ?: Widget.Default(WidgetInfo())
 
     }
 
