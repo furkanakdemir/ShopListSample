@@ -4,7 +4,7 @@ package net.furkanakdemir.shoplistsample.data
 import com.google.gson.annotations.SerializedName
 
 data class WidgetResponse(
-    @SerializedName("widgets") val widgetRaws: List<WidgetRaw?>?
+    @SerializedName("widgets") val widgetRaws: List<WidgetRaw?> = emptyList()
 ) {
     data class WidgetRaw(
         @SerializedName("bannerContents") val bannerContents: List<BannerContent?>?,
