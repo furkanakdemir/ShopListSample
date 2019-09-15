@@ -22,7 +22,7 @@ sealed class ViewItem {
         override fun viewType(): Int = VIEW_TYPE_LISTING
     }
 
-    data class CarouselViewItem(val imageUrl: String) : ViewItem() {
+    data class CarouselViewItem(val carousel: Carousel) : ViewItem() {
         override fun viewType(): Int = VIEW_TYPE_CAROUSEL
     }
 
@@ -44,3 +44,6 @@ data class Slide(
     val displayCount: Int = 1,
     val isClickable: Boolean = false
 ) : Parcelable
+
+
+data class Carousel(val images: List<String>)

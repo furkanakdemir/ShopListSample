@@ -38,7 +38,11 @@ class WidgetViewModel @Inject constructor(
 
                         result.data.forEach {
                             viewList += viewMapper.map(it)
+
+                            println(viewMapper.map(it))
                         }
+
+
 
                         _widgetsLiveData.value = viewList
                     }

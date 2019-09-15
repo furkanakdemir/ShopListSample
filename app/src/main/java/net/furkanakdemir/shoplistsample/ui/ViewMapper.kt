@@ -2,6 +2,7 @@ package net.furkanakdemir.shoplistsample.ui
 
 import net.furkanakdemir.shoplistsample.data.Widget
 import net.furkanakdemir.shoplistsample.mapper.Mapper
+import net.furkanakdemir.shoplistsample.ui.data.Carousel
 import net.furkanakdemir.shoplistsample.ui.data.Slide
 import net.furkanakdemir.shoplistsample.ui.data.ViewItem
 import javax.inject.Inject
@@ -68,8 +69,13 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
                 }
                 "CAROUSEL" -> {
                     return when (it) {
-                        is Widget.Banner -> ViewItem.CarouselViewItem(it.bannerContents.first().imageUrl)
-                        is Widget.Products -> ViewItem.CarouselViewItem(it.products.first().imageUrl)
+                        is Widget.Banner -> ViewItem.CarouselViewItem(
+                            Carousel(it.bannerContents.map { banner -> banner.imageUrl })
+                        )
+                        is Widget.Products -> ViewItem.CarouselViewItem(
+                            Carousel(
+                                it.products.map { product -> product.imageUrl })
+                        )
                         else -> ViewItem.DefaultViewItem
                     }
                 }

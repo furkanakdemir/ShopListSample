@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import net.furkanakdemir.shoplistsample.R
 import net.furkanakdemir.shoplistsample.image.ImageLoader
 import net.furkanakdemir.shoplistsample.ui.base.BaseViewHolder
@@ -51,7 +52,7 @@ class WidgetListAdapter(
 
             VIEW_TYPE_CAROUSEL -> CarouselViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.list_item_widget, parent, false)
+                    .inflate(R.layout.list_item_carousel, parent, false)
             )
 
             else -> throw IllegalArgumentException("Invalid view type $viewType")
@@ -116,8 +117,8 @@ class WidgetListAdapter(
     inner class CarouselViewHolder(itemView: View) :
         BaseViewHolder<ViewItem.CarouselViewItem>(itemView) {
         override fun bind(item: ViewItem.CarouselViewItem) {
-            val imageView = itemView.findViewById<ImageView>(R.id.imageTextView)
-            imageLoader.load(imageView, item.imageUrl)
+            val viewPager = itemView.findViewById<ViewPager>(R.id.carouselViewPager)
+            viewPager.adapter = CarouselAdapter(itemView.context, item.carousel.images, imageLoader)
         }
     }
 }
