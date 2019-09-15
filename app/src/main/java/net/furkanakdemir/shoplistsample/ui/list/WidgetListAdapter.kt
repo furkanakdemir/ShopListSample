@@ -18,6 +18,7 @@ import net.furkanakdemir.shoplistsample.ui.data.ViewItem.Companion.VIEW_TYPE_SLI
 
 class WidgetListAdapter(
     val imageLoader: ImageLoader,
+    val windowWidth: Int,
     val onSlideCallback: SliderAdapter.OnSlideCallback
 ) : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
@@ -93,11 +94,9 @@ class WidgetListAdapter(
             sliderRecyclerView.apply {
                 layoutManager =
                     LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
-                adapter = SliderAdapter(item.slides, imageLoader, onSlideCallback)
+                adapter = SliderAdapter(item.slides, imageLoader, windowWidth, onSlideCallback)
                 setRecycledViewPool(viewPool)
             }
-
-            print(item.slides)
         }
     }
 
@@ -108,7 +107,7 @@ class WidgetListAdapter(
             sliderRecyclerView.apply {
                 layoutManager =
                     LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
-                adapter = SliderAdapter(item.slides, imageLoader, onSlideCallback)
+                adapter = SliderAdapter(item.slides, imageLoader, windowWidth, onSlideCallback)
                 setRecycledViewPool(viewPool)
             }
         }

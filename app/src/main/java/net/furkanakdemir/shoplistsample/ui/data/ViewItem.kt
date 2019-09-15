@@ -41,5 +41,6 @@ data class Slide(
     val title: String,
     val subtitle: String,
     val imageUrl: String,
+    val displayCount: Int = 1,
     val isClickable: Boolean = false
 ) : Parcelable

@@ -14,6 +14,7 @@ import net.furkanakdemir.shoplistsample.ui.data.Slide
 class SliderAdapter(
     private val slides: List<Slide>,
     val imageLoader: ImageLoader,
+    val windowWidth: Int,
     val onSlideCallback: OnSlideCallback
 ) :
     RecyclerView.Adapter<BaseViewHolder<Slide>>() {
@@ -32,6 +33,12 @@ class SliderAdapter(
     inner class SlideViewHolder(itemView: View) :
         BaseViewHolder<Slide>(itemView) {
         override fun bind(item: Slide) {
+
+            // Set width according to server response
+            itemView.layoutParams.width = windowWidth / item.displayCount
+
+            // Set a margin to render the next item
+            itemView.layoutParams.width -= windowWidth / 10
 
             val imageView = itemView.findViewById<ImageView>(R.id.slideImageView)
             val slideTitleTextView = itemView.findViewById<TextView>(R.id.slideTitleTextView)

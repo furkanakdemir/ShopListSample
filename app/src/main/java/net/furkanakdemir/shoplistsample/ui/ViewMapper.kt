@@ -25,10 +25,21 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
                 "SLIDER" -> {
                     return when (it) {
                         is Widget.Banner -> ViewItem.SliderViewItem(it.bannerContents.map { banner ->
-                            Slide(banner.title, banner.subtitle, banner.imageUrl)
+                            Slide(
+                                banner.title,
+                                banner.subtitle,
+                                banner.imageUrl,
+                                it.info.displayCount
+                            )
                         })
                         is Widget.Products -> ViewItem.SliderViewItem(it.products.map { product ->
-                            Slide(product.name, product.categoryName, product.imageUrl, true)
+                            Slide(
+                                product.name,
+                                product.categoryName,
+                                product.imageUrl,
+                                it.info.displayCount,
+                                true
+                            )
                         })
                         else -> ViewItem.DefaultViewItem
                     }
@@ -36,10 +47,21 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
                 "LISTING" -> {
                     return when (it) {
                         is Widget.Banner -> ViewItem.ListingViewItem(it.bannerContents.map { banner ->
-                            Slide(banner.title, banner.subtitle, banner.imageUrl)
+                            Slide(
+                                banner.title,
+                                banner.subtitle,
+                                banner.imageUrl,
+                                it.info.displayCount
+                            )
                         })
                         is Widget.Products -> ViewItem.ListingViewItem(it.products.map { product ->
-                            Slide(product.name, product.categoryName, product.imageUrl, true)
+                            Slide(
+                                product.name,
+                                product.categoryName,
+                                product.imageUrl,
+                                it.info.displayCount,
+                                isClickable = true
+                            )
                         })
                         else -> ViewItem.DefaultViewItem
                     }
