@@ -35,13 +35,7 @@ class WidgetViewModel @Inject constructor(
                         _eventLiveData.value = Event(ViewState.Empty("Empty List"))
                     } else {
                         val viewList = mutableListOf<ViewItem>()
-
-                        result.data.forEach {
-                            viewList += viewMapper.map(it)
-                        }
-
-
-
+                        result.data.forEach { viewList += viewMapper.map(it) }
                         _widgetsLiveData.value = viewList
                     }
                 }

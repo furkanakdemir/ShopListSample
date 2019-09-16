@@ -16,7 +16,6 @@ import net.furkanakdemir.shoplistsample.ui.data.ViewItem.Companion.VIEW_TYPE_LIS
 import net.furkanakdemir.shoplistsample.ui.data.ViewItem.Companion.VIEW_TYPE_SINGLE
 import net.furkanakdemir.shoplistsample.ui.data.ViewItem.Companion.VIEW_TYPE_SLIDER
 
-
 class WidgetListAdapter(
     val imageLoader: ImageLoader,
     val windowWidth: Int,

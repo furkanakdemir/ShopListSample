@@ -35,7 +35,6 @@ sealed class ViewItem {
     }
 }
 
-
 @Parcelize
 data class Slide(
     val title: String,
@@ -44,6 +43,5 @@ data class Slide(
     val displayCount: Int = 1,
     val isClickable: Boolean = false
 ) : Parcelable
-
 
 data class Carousel(val images: List<String>)

@@ -1,6 +1,5 @@
 package net.furkanakdemir.shoplistsample.ui.detail
 
-
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -31,7 +30,6 @@ class WidgetDetailFragment : BaseFragment() {
         sharedElementEnterTransition =
             TransitionInflater.from(context).inflateTransition(android.R.transition.move)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

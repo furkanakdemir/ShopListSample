@@ -23,19 +23,16 @@ abstract class WidgetModule {
     @Binds
     abstract fun bindWidgetRepository(repository: RealWidgetRepository): WidgetRepository
 
-
     @Binds
-    abstract fun bindRemoteWidgetDataSource(remoteWidgetDataSource: RemoteWidgetDataSource)
-            : WidgetDataSource
+    abstract fun bindRemoteWidgetDataSource(remoteWidgetDataSource: RemoteWidgetDataSource): WidgetDataSource
 
     @Module
     companion object {
 
         @JvmStatic
         @Provides
-        fun bindListDomainMapper(mapper: Mapper<WidgetResponse.WidgetRaw?, Widget>)
-                : ListMapper<WidgetResponse.WidgetRaw?, Widget> =
-            RealListMapper(mapper)
+        fun bindListDomainMapper(mapper: Mapper<WidgetResponse.WidgetRaw?, Widget>):
+                ListMapper<WidgetResponse.WidgetRaw?, Widget> = RealListMapper(mapper)
 
         @JvmStatic
         @Provides

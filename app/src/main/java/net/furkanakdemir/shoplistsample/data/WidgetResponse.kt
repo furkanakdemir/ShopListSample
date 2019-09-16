@@ -1,6 +1,5 @@
 package net.furkanakdemir.shoplistsample.data
 
-
 import com.google.gson.annotations.SerializedName
 
 data class WidgetResponse(

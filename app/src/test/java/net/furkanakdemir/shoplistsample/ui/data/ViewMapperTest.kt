@@ -33,7 +33,6 @@ class ViewMapperTest {
         assertThat(actual, instanceOf(ViewItem.DefaultViewItem::class.java))
     }
 
-
     @Test
     fun testMapSingleBanner() {
         val actual = viewMapper.map(TEST_WIDGET_BANNER_SINGLE)

@@ -28,7 +28,6 @@ class DomainMapperTest {
         assertThat(actual, instanceOf(Widget.Default::class.java))
     }
 
-
     @Test
     fun testUnknownInput() {
         val actual = domainMapper.map(TEST_WIDGET_RAW_UNKNOWN)
@@ -43,7 +42,6 @@ class DomainMapperTest {
         assertThat(actual.products, Is(TEST_PRODUCTS))
     }
 
-
     @Test
     fun testBannersInput() {
         val actual = domainMapper.map(TEST_WIDGET_RAW_BANNER)
@@ -51,6 +49,4 @@ class DomainMapperTest {
         assertThat((actual as Widget.Banner).bannerContents.size, Is(1))
         assertThat(actual.bannerContents, Is(TEST_BANNER_CONTENTS))
     }
-
-
 }

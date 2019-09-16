@@ -1,8 +1,13 @@
 package net.furkanakdemir.shoplistsample.mapper
 
-import net.furkanakdemir.shoplistsample.data.*
+import net.furkanakdemir.shoplistsample.data.BannerContent
+import net.furkanakdemir.shoplistsample.data.Product
+import net.furkanakdemir.shoplistsample.data.Widget
+import net.furkanakdemir.shoplistsample.data.WidgetInfo
+import net.furkanakdemir.shoplistsample.data.WidgetResponse
 import javax.inject.Inject
 
+@Suppress("ReturnCount", "LongMethod", "ComplexMethod")
 class DomainMapper @Inject constructor() : Mapper<WidgetResponse.WidgetRaw?, Widget> {
     override fun map(input: WidgetResponse.WidgetRaw?): Widget {
 
@@ -23,11 +28,9 @@ class DomainMapper @Inject constructor() : Mapper<WidgetResponse.WidgetRaw?, Wid
                     return Widget.Banner(widgetInfo, bannerContents)
                 }
 
-
                 else -> Widget.Default(buildWidgetInfo(it))
             }
         } ?: Widget.Default(WidgetInfo())
-
     }
 
     private fun buildBannerContents(widgetRaw: WidgetResponse.WidgetRaw): List<BannerContent> {
@@ -44,7 +47,6 @@ class DomainMapper @Inject constructor() : Mapper<WidgetResponse.WidgetRaw?, Wid
         }
 
         return bannerContents
-
     }
 
     private fun buildProducts(widgetRaw: WidgetResponse.WidgetRaw): List<Product> {

@@ -15,7 +15,6 @@ import org.mockito.Mockito
 import java.io.IOException
 import org.hamcrest.core.Is.`is` as Is
 
-
 @ExperimentalCoroutinesApi
 class WidgetRepositoryTest {
 
@@ -28,7 +27,6 @@ class WidgetRepositoryTest {
         widgetRepository = RealWidgetRepository(widgetDataSource)
     }
 
-
     @Test
     fun testErrorList() = runBlockingTest {
 
@@ -39,7 +37,6 @@ class WidgetRepositoryTest {
         assertThat(actual, instanceOf(Result.Error::class.java))
         assertThat((actual as Result.Error).exception, instanceOf(IOException::class.java))
     }
-
 
     @Test
     fun testEmptyList() = runBlockingTest {

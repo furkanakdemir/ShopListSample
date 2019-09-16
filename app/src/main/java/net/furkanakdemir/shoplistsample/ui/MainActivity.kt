@@ -21,11 +21,9 @@ class MainActivity : DaggerAppCompatActivity() {
 
         // Set up the ActionBar to stay in sync with the NavController
         setupActionBarWithNavController(findNavController(R.id.nav_host_fragment))
-
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
-
 
     fun setTitle(text: String) {
         supportActionBar?.setTitle(text)

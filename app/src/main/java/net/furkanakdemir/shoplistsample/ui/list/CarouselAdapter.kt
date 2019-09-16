@@ -9,7 +9,6 @@ import androidx.viewpager.widget.PagerAdapter
 import net.furkanakdemir.shoplistsample.R
 import net.furkanakdemir.shoplistsample.image.ImageLoader
 
-
 class CarouselAdapter(
     private val context: Context,
     private val images: List<String>,

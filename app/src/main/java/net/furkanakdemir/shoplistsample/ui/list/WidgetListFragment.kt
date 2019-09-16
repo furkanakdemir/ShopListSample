@@ -1,6 +1,5 @@
 package net.furkanakdemir.shoplistsample.ui.list
 
-
 import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
@@ -35,7 +34,6 @@ class WidgetListFragment : BaseFragment(), SliderAdapter.OnSlideCallback {
 
     @Inject
     lateinit var imageLoader: ImageLoader
-
 
     override val layoutId: Int
         get() = R.layout.fragment_widget_list

@@ -29,7 +29,6 @@ class SliderAdapter(
     override fun onBindViewHolder(holder: BaseViewHolder<Slide>, position: Int) =
         holder.bind(slides[position])
 
-
     inner class SlideViewHolder(itemView: View) :
         BaseViewHolder<Slide>(itemView) {
         override fun bind(item: Slide) {
@@ -38,7 +37,7 @@ class SliderAdapter(
             itemView.layoutParams.width = windowWidth / item.displayCount
 
             // Set a margin to render the next item
-            itemView.layoutParams.width -= windowWidth / 10
+            itemView.layoutParams.width -= windowWidth / PERCENT_TEN
 
             val imageView = itemView.findViewById<ImageView>(R.id.slideImageView)
             val slideTitleTextView = itemView.findViewById<TextView>(R.id.slideTitleTextView)
@@ -54,6 +53,10 @@ class SliderAdapter(
                 }
             }
         }
+    }
+
+    companion object {
+        private const val PERCENT_TEN = 10
     }
 
     interface OnSlideCallback {

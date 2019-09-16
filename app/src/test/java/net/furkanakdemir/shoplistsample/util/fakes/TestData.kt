@@ -1,6 +1,10 @@
 package net.furkanakdemir.shoplistsample.util.fakes
 
-import net.furkanakdemir.shoplistsample.data.*
+import net.furkanakdemir.shoplistsample.data.BannerContent
+import net.furkanakdemir.shoplistsample.data.Product
+import net.furkanakdemir.shoplistsample.data.Widget
+import net.furkanakdemir.shoplistsample.data.WidgetInfo
+import net.furkanakdemir.shoplistsample.data.WidgetResponse
 import net.furkanakdemir.shoplistsample.ui.data.ViewItem
 
 object TestData {
@@ -23,7 +27,7 @@ object TestData {
     const val TEST_DISPLAY_TYPE_LISTING = "LISTING"
     const val TEST_DISPLAY_TYPE_CAROUSEL = "CAROUSEL"
 
-    val TEST_WIDGET_INFO = WidgetInfo(
+    private val TEST_WIDGET_INFO = WidgetInfo(
         TEST_ID,
         TEST_DISPLAY_COUNT,
         TEST_TITLE,
@@ -31,7 +35,7 @@ object TestData {
         TEST_TYPE_BANNER
     )
 
-    val TEST_WIDGET_INFO_SLIDER = WidgetInfo(
+    private val TEST_WIDGET_INFO_SLIDER = WidgetInfo(
         TEST_ID,
         TEST_DISPLAY_COUNT,
         TEST_TITLE,
@@ -39,7 +43,7 @@ object TestData {
         TEST_TYPE_BANNER
     )
 
-    val TEST_WIDGET_INFO_CAROUSEL = WidgetInfo(
+    private val TEST_WIDGET_INFO_CAROUSEL = WidgetInfo(
         TEST_ID,
         TEST_DISPLAY_COUNT,
         TEST_TITLE,
@@ -47,7 +51,7 @@ object TestData {
         TEST_TYPE_BANNER
     )
 
-    val TEST_WIDGET_INFO_LISTING = WidgetInfo(
+    private val TEST_WIDGET_INFO_LISTING = WidgetInfo(
         TEST_ID,
         TEST_DISPLAY_COUNT,
         TEST_TITLE,
@@ -112,14 +116,13 @@ object TestData {
     val TEST_WIDGET_PRODUCT_LISTING =
         Widget.Products(TEST_WIDGET_INFO_LISTING, TEST_PRODUCTS)
 
-
-    val TEST_BANNER_CONTENTS_RAW = WidgetResponse.WidgetRaw.BannerContentRaw(
+    private val TEST_BANNER_CONTENTS_RAW = WidgetResponse.WidgetRaw.BannerContentRaw(
         TEST_TITLE,
         TEST_SUBTITLE,
         TEST_IMAGE_URL
     )
 
-    val TEST_PRODUCTS_RAW = WidgetResponse.WidgetRaw.ProductRaw(
+    private val TEST_PRODUCTS_RAW = WidgetResponse.WidgetRaw.ProductRaw(
         TEST_ID,
         TEST_NAME,
         TEST_CATEGORY,
@@ -156,6 +159,4 @@ object TestData {
         emptyList(),
         emptyList()
     )
-
-
 }

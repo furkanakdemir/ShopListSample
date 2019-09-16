@@ -4,6 +4,7 @@ import net.furkanakdemir.shoplistsample.data.Widget
 import net.furkanakdemir.shoplistsample.mapper.Mapper
 import javax.inject.Inject
 
+@Suppress("ReturnCount", "LongMethod", "ComplexMethod")
 class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
 
     override fun map(input: Widget?): ViewItem {
