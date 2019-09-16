@@ -11,16 +11,17 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
         // TODO Fix this complexity
         input?.let {
 
-            when (it.info.displayType) {
+            val displayType: DisplayType = DisplayType.valueOf(it.info.displayType)
+            when (displayType) {
 
-                "SINGLE" -> {
+                DisplayType.SINGLE -> {
                     return when (it) {
                         is Widget.Banner -> ViewItem.SingleViewItem(it.bannerContents.first().imageUrl)
                         is Widget.Products -> ViewItem.SingleViewItem(it.products.first().imageUrl)
                         else -> ViewItem.DefaultViewItem
                     }
                 }
-                "SLIDER" -> {
+                DisplayType.SLIDER -> {
                     return when (it) {
                         is Widget.Banner -> ViewItem.SliderViewItem(it.bannerContents.map { banner ->
                             Slide(
@@ -42,7 +43,7 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
                         else -> ViewItem.DefaultViewItem
                     }
                 }
-                "LISTING" -> {
+                DisplayType.LISTING -> {
                     return when (it) {
                         is Widget.Banner -> ViewItem.ListingViewItem(it.bannerContents.map { banner ->
                             Slide(
@@ -64,7 +65,7 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
                         else -> ViewItem.DefaultViewItem
                     }
                 }
-                "CAROUSEL" -> {
+                DisplayType.CAROUSEL -> {
                     return when (it) {
                         is Widget.Banner -> ViewItem.CarouselViewItem(
                             Carousel(it.bannerContents.map { banner -> banner.imageUrl })
@@ -80,5 +81,9 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
             }
         }
         return ViewItem.DefaultViewItem
+    }
+
+    enum class DisplayType {
+        SINGLE, SLIDER, LISTING, CAROUSEL
     }
 }

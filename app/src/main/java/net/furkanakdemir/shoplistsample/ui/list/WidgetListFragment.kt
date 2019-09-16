@@ -1,13 +1,10 @@
 package net.furkanakdemir.shoplistsample.ui.list
 
 
-import android.content.Context
-import android.graphics.Point
 import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +18,7 @@ import net.furkanakdemir.shoplistsample.result.EventObserver
 import net.furkanakdemir.shoplistsample.ui.WidgetViewModel
 import net.furkanakdemir.shoplistsample.ui.base.BaseFragment
 import net.furkanakdemir.shoplistsample.ui.data.Slide
+import net.furkanakdemir.shoplistsample.util.getWindowWidth
 import javax.inject.Inject
 
 /**
@@ -70,12 +68,7 @@ class WidgetListFragment : BaseFragment(), SliderAdapter.OnSlideCallback {
     }
 
     private fun setupRecyclerView() {
-        // TODO Inject via DimensionProvider
-        val wm = requireActivity().getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        val display = wm.defaultDisplay
-        val size = Point()
-        display.getSize(size)
-        val windowWidth = size.x
+        val windowWidth = requireActivity().getWindowWidth()
 
         widgetListAdapter = WidgetListAdapter(imageLoader, windowWidth, this)
 
