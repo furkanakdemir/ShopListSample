@@ -24,9 +24,13 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        headerInterceptor: HeaderInterceptor
+    ): OkHttpClient {
 
         return OkHttpClient.Builder()
+            .addInterceptor(headerInterceptor)
             .addInterceptor(loggingInterceptor)
             .build()
     }
@@ -37,6 +41,9 @@ class NetworkModule {
         loggingInterceptor.apply { loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY }
         return loggingInterceptor
     }
+
+    @Provides
+    fun provideHeaderInterceptor(): HeaderInterceptor = HeaderInterceptor()
 
     companion object {
 
