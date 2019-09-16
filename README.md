@@ -9,7 +9,7 @@ This is a sample showing a list of widgets fetched from server and render them a
 
 ### Android Development
 --------
-WebSocketSample attempts to use the latest libraries and tools:
+ShopListSample attempts to use the latest libraries and tools:
 
   - Written in [Kotlin](https://kotlinlang.org/)
   - Developed with [MVVM Architectural style](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) recommended by Google
