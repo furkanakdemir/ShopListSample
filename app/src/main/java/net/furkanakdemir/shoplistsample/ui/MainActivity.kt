@@ -1,10 +1,11 @@
-package net.furkanakdemir.shoplistsample
+package net.furkanakdemir.shoplistsample.ui
 
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import net.furkanakdemir.shoplistsample.R
 
 class MainActivity : DaggerAppCompatActivity() {
 

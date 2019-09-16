@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import dagger.android.support.DaggerFragment
-import net.furkanakdemir.shoplistsample.MainActivity
+import net.furkanakdemir.shoplistsample.ui.MainActivity
 
 abstract class BaseFragment : DaggerFragment() {
 

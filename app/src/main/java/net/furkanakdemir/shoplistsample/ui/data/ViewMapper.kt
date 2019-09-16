@@ -11,8 +11,7 @@ class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
         // TODO Fix this complexity
         input?.let {
 
-            val displayType: DisplayType = DisplayType.valueOf(it.info.displayType)
-            when (displayType) {
+            when (DisplayType.valueOf(it.info.displayType)) {
 
                 DisplayType.SINGLE -> {
                     return when (it) {
