@@ -21,9 +21,7 @@ data class WidgetInfo(
 data class BannerContent(
     val title: String,
     val subtitle: String,
-    val imageUrl: String,
-    val height: Int,
-    val width: Int
+    val imageUrl: String
 )
 
 data class Product(

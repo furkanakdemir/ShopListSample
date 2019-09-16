@@ -38,9 +38,7 @@ class DomainMapper @Inject constructor() : Mapper<WidgetResponse.WidgetRaw?, Wid
                 bannerContents += BannerContent(
                     contentRaw?.title ?: "",
                     contentRaw?.subtitle ?: "",
-                    contentRaw?.imageUrl ?: "",
-                    contentRaw?.height ?: 0,
-                    contentRaw?.width ?: 0
+                    contentRaw?.imageUrl ?: ""
                 )
             }
         }

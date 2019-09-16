@@ -1,10 +1,7 @@
-package net.furkanakdemir.shoplistsample.ui
+package net.furkanakdemir.shoplistsample.ui.data
 
 import net.furkanakdemir.shoplistsample.data.Widget
 import net.furkanakdemir.shoplistsample.mapper.Mapper
-import net.furkanakdemir.shoplistsample.ui.data.Carousel
-import net.furkanakdemir.shoplistsample.ui.data.Slide
-import net.furkanakdemir.shoplistsample.ui.data.ViewItem
 import javax.inject.Inject
 
 class ViewMapper @Inject constructor() : Mapper<Widget, ViewItem> {
